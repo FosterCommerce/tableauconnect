@@ -1,0 +1,39 @@
+{% do view.registerAssetBundle("fostercommerce\\tableauconnect\\bundles\\TableauAsset") %}
+
+{% block content %}
+<div class="tableau-visualization-container">
+</div>
+
+{% endblock %}
+
+{% js %}
+const {{prefix}}_initTableauVisualization = () => {
+  let viz
+
+  const onFirstInteractive = e => {
+    {% if callbacks.onFirstInteractive is defined %}
+    const f = new Function('e', '{{callbacks.onFirstInteractive}}(e)')
+    return f(e)
+    {% endif %}
+  }
+
+  const onFirstVizSizeKnown = e => {
+    {% if callbacks.onFirstVizSizeKnown is defined %}
+    const f = new Function('e', '{{callbacks.onFirstVizSizeKnown}}(e)')
+    return f(e)
+    {% endif %}
+  }
+
+  const containerDiv = document.querySelector(".tableau-visualization-container")
+  const url = '{{settings.tableauServerUrl}}/views/{{tableauView}}'
+
+  const options = Object.assign({{options|json_encode()|raw}}, {
+    onFirstInteractive,
+    onFirstVizSizeKnown,
+  })
+
+  viz = new tableau.Viz(containerDiv, url, options)
+}
+
+{{prefix}}_initTableauVisualization()
+{% endjs %}

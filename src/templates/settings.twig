@@ -1,0 +1,19 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Tableau Server Url'|t('tableauconnect'),
+    instructions: 'The URL to your Tableau server'|t('tableauconnect'),
+    id: 'tableauServerUrl',
+    name: 'tableauServerUrl',
+    value: settings.tableauServerUrl,
+    errors: settings.getErrors('tableauServerUrl'),
+}) }}
+
+{{ forms.checkboxField({
+    label: 'Requires Authorization'|t('tableauconnect'),
+    instructions: 'Do your Tableau visualizations require authorization? '|t('tableauconnect'),
+    id: 'requireAuthorization',
+    name: 'requireAuthorization',
+    checked: settings.requireAuthorization,
+    errors: settings.getErrors('requireAuthorization'),
+}) }}
