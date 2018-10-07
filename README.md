@@ -64,11 +64,23 @@ See [onFirstInteractive](https://onlinehelp.tableau.com/current/api/js_api/en-us
 })}}
 
 {% js %}
-function myCustomOnFirstInteractive(e) {
+/**
+ * args: {
+ *   key: Key applied to visualization container
+ *   container: Element visualization is loaded into
+ * }
+ */
+function myCustomOnFirstInteractive(e, args) {
   // Do something...
 }
 
-function myCustomOnFirstVizSizeKnown(e) {
+/**
+ * args: {
+ *   key: Key applied to visualization container
+ *   container: Element visualization is loaded into
+ * }
+ */
+function myCustomOnFirstVizSizeKnown(e, args) {
   // Do something
 }
 {% endjs %}
