@@ -11,7 +11,7 @@ class Variable
         $settings = $plugin->settings;
         $url = $settings->tableauServerUrl;
         if ($settings->requireAuthorization) {
-            $plugin->link->authorize();
+            $token = $plugin->link->authorize();
             $url = "{$url}/trusted/{$token}";
         }
         $url = "${url}/views/$view?embed=y";
@@ -22,16 +22,13 @@ class Variable
     public function renderVisualization($view, $options)
     {
         $plugin = Plugin::getInstance();
-        return $plugin->visualization->render($view, $options);
-        // $settings = $plugin->settings;
-        // $url = $settings->tableauServerUrl;
-        // if ($settings->requireAuthorization) {
-        //     $plugin->link->authorize();
-        //     $url = "{$url}/trusted/{$token}";
-        // }
-        // $url = "${url}/views/$view?embed=y";
+        $settings = $plugin->settings;
+        if ($settings->requireAuthorization) {
+            $token = $plugin->link->authorize();
+            $view = "trusted/{$token}/{$view}";
+        }
 
-        // return $url;
+        return $plugin->visualization->render($view, $options);
     }
 
     public function baseUrl()

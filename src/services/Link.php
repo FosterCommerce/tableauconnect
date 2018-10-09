@@ -51,8 +51,6 @@ class Link extends Component
             throw new TableauAuthorizationException($user->email);
         }
 
-        // Example:
-        // http://tabserver/trusted/9D1ObyqDQmSIOyQpKdy4Sw==:dg62gCsSE0QRArXNTOp6mlJ5/views/workbookQ4/SalesQ4
         return $token;
     }
 }
