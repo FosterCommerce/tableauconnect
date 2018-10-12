@@ -3,8 +3,8 @@ namespace fostercommerce\tableauconnect\services;
 
 use Craft;
 use craft\base\Component;
+use yii\web\HttpException;
 use fostercommerce\tableauconnect\Plugin;
-use fostercommerce\tableauconnect\exceptions\NotAuthorizedException;
 use fostercommerce\tableauconnect\exceptions\TableauAuthorizationException;
 use fostercommerce\tableauconnect\exceptions\TableauResponseException;
 
@@ -24,17 +24,20 @@ class Link extends Component
         $this->client = new Client();
     }
 
-    public function authorize($siteId = null)
+    public function authorize($siteId = null, $clientIp = null)
     {
         $user = Craft::$app->user->getIdentity();
         if (is_null($user)) {
-            throw new NotAuthorizedException();
+            throw new HttpException(401);
         }
 
         $postData = [
             'username' => $user->email,
-            'client_ip' => Craft::$app->getRequest()->getUserIP(),
         ];
+
+        if (!is_null($clientIp)) {
+            $postData['client_ip'] = $clientIp;
+        }
 
         if (!is_null($siteId)) {
             $postData['target_site'] = $siteId;
