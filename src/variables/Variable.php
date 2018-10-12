@@ -25,7 +25,9 @@ class Variable
         $settings = $plugin->settings;
         if ($settings->requireAuthorization) {
             $token = $plugin->link->authorize();
-            $view = "trusted/{$token}/{$view}";
+            $view = "trusted/{$token}/views/{$view}";
+        } else {
+            $view = "views/{$view}";
         }
 
         return $plugin->visualization->render($view, $options);
