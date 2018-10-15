@@ -36,5 +36,8 @@
             "visualization": "fostercommerce\\tableauconnect\\services\\Visualization"
         },
         "class": "fostercommerce\\tableauconnect\\Plugin"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.13"
     }
 }

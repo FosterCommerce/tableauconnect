@@ -48,7 +48,7 @@ class Variable
         $requireAuthorization = $plugin->settings->requireAuthorization;
         if ($this->canView() && $requireAuthorization) {
             $view = "trusted/{$this->token}/views/{$view}";
-        } else if (!$requireAuthorization) {
+        } elseif (!$requireAuthorization) {
             $view = "views/{$view}";
         } else {
             throw new HttpException(401, 'Unauthorized to view visualization');
