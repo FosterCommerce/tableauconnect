@@ -44,7 +44,15 @@ class Link extends Component
         }
 
         try {
-            $response = $this->client->post("{$this->settings->tableauServerUrl}/trusted", $postData);
+            $request = new Request(
+                'POST',
+                "{$this->settings->tableauServerUrl}/trusted",
+                [
+                    'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'form_params' => $postData,
+                ]
+            );
+            $response = $this->client->send($request);
             $token = (string) $response->getBody();
         } catch (RequestException $e) {
             throw new TableauResponseException($e);

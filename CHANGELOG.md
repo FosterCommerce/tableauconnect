@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.7 - 2018-10-15
+
+### Fixed
+
+- Include `"Content-Type"` header in Tableau authorization requests.
+
 ## 1.0.0-beta.6 - 2018-10-15
 
 ### Added
