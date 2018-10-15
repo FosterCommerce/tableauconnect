@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.8 - 2018-10-15
+
+### Fixed
+
+- Pass through headers and form data in the GuzzleHttp client `post` call.
+
 ## 1.0.0-beta.7 - 2018-10-15
 
 ### Fixed

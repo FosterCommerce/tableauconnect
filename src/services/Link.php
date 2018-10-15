@@ -9,7 +9,6 @@ use fostercommerce\tableauconnect\exceptions\TableauAuthorizationException;
 use fostercommerce\tableauconnect\exceptions\TableauResponseException;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Exception\RequestException;
 
 class Link extends Component
@@ -44,15 +43,15 @@ class Link extends Component
         }
 
         try {
-            $request = new Request(
-                'POST',
+            $response = $this->client->post(
                 "{$this->settings->tableauServerUrl}/trusted",
                 [
-                    'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'headers' => [
+                        'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
+                    ],
                     'form_params' => $postData,
                 ]
             );
-            $response = $this->client->send($request);
             $token = (string) $response->getBody();
         } catch (RequestException $e) {
             throw new TableauResponseException($e);
