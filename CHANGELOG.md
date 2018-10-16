@@ -1,5 +1,15 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.10 - 2018-10-17
+
+### Updated
+
+- Renamed `prefix` to `key`.
+
+### Fixed
+
+- Moved unique key to end of element classname.
+
 ## 1.0.0-beta.9 - 2018-10-16
 
 ### Fixed

@@ -20,7 +20,7 @@ class Visualization extends Component
     {
         // Prevent potential clashes if a use has multiple
         // visualizations in a template.
-        $prefix = Craft::$app->security->generateRandomString(8);
+        $key = Craft::$app->security->generateRandomString(8);
 
         $callbacks = array();
         if (isset($options['onFirstInteractive'])) {
@@ -36,7 +36,7 @@ class Visualization extends Component
         }
 
         $params = [
-            'prefix' => $prefix,
+            'key' => $key,
             'tableauView' => $view,
             'settings' => $this->settings,
             'options' => $options,

@@ -1,14 +1,14 @@
 {% do view.registerAssetBundle("fostercommerce\\tableauconnect\\bundles\\TableauAsset") %}
 
 {% block content %}
-<div class="tableau-visualization-container {{prefix}}-tableau-visualization-container">
+<div class="tableau-visualization-container tableau-visualization-container-{{key}}">
 </div>
 
 {% endblock %}
 
 {% js %}
-const initTableauVisualization_{{prefix}} = () => {
-  const containerDiv = document.querySelector(".{{prefix}}-tableau-visualization-container")
+const initTableauVisualization_{{key}} = () => {
+  const containerDiv = document.querySelector(".tableau-visualization-container-{{key}}")
   let viz
 
   const onFirstInteractive = e => {
@@ -17,7 +17,7 @@ const initTableauVisualization_{{prefix}} = () => {
     return f(
       e,
       {
-        key: '{{prefix}}',
+        key: '{{key}}',
         container: containerDiv,
       },
     )
@@ -30,7 +30,7 @@ const initTableauVisualization_{{prefix}} = () => {
     return f(
       e,
       {
-        key: '{{prefix}}',
+        key: '{{key}}',
         container: containerDiv,
       },
     )
@@ -47,5 +47,5 @@ const initTableauVisualization_{{prefix}} = () => {
   viz = new tableau.Viz(containerDiv, url, options)
 }
 
-initTableauVisualization_{{prefix}}()
+initTableauVisualization_{{key}}()
 {% endjs %}
