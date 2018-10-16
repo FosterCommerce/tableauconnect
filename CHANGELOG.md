@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.9 - 2018-10-16
+
+### Fixed
+
+- Fixed an issue caused when the unique code prepended to the JS initialization function started with a number.
+
 ## 1.0.0-beta.8 - 2018-10-15
 
 ### Fixed

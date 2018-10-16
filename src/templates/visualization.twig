@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% js %}
-const {{prefix}}_initTableauVisualization = () => {
+const initTableauVisualization_{{prefix}} = () => {
   const containerDiv = document.querySelector(".{{prefix}}-tableau-visualization-container")
   let viz
 
@@ -47,5 +47,5 @@ const {{prefix}}_initTableauVisualization = () => {
   viz = new tableau.Viz(containerDiv, url, options)
 }
 
-{{prefix}}_initTableauVisualization()
+initTableauVisualization_{{prefix}}()
 {% endjs %}
