@@ -47,11 +47,13 @@ class Variable
         return $url;
     }
 
-    public function renderVisualization($view, $options)
+    public function renderVisualization($view, $options, $requireAuthorization)
     {
         $plugin = Plugin::getInstance();
-        $requireAuthorization = $plugin->settings->requireAuthorization;
-        if ($this->canView() && $requireAuthorization) {
+        $requireAuthorization = isset($requireAuthorization)
+            ? $requireAuthorization
+            : $plugin->settings->requireAuthorization;
+        if ($requireAuthorization && $this->canView()) {
             $view = "trusted/{$this->token}/views/{$view}";
         } elseif (!$requireAuthorization) {
             $view = "views/{$view}";
