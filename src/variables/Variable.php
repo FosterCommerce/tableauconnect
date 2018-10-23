@@ -18,6 +18,11 @@ class Variable
                 $this->token = $plugin->link->authorize();
             } catch (TableauAuthorizationException $e) {
                 return false;
+            } catch (HttpException $e) {
+                if ($e->statusCode === 401) {
+                    return false;
+                }
+                throw $e;
             } catch (TableauResponseException $e) {
                 throw new HttpException(400, $e->getMessage(), 0, $e);
             }
