@@ -1,5 +1,15 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.11 - 2018-10-23
+
+## Added
+
+- Add per-view `requiresAuthorization` override to `renderVisualization`.
+
+## Updated
+
+- `canView` returns `false` if the handled exception is an HTTP 401 error.
+
 ## 1.0.0-beta.10 - 2018-10-17
 
 ### Updated

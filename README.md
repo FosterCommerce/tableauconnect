@@ -47,11 +47,33 @@ Enable this setting if you need to access views which require user authorization
 
 ### Render Visualization
 
+#### Parameters
+
+**view**
+
+The view to render.
+
+```twig
+{{ craft.tableauconnect.renderVisualization('Workbook/SomeView', {...}) }}
+```
+
+**options**
+
 Supports all options supported by [Tableau JS API](https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#vizcreateoptions_record)
 
 `onFirstInteractive` and `onFirstVizSizeKnown` should be passed in as strings to Tableau Connect.
 
 See [onFirstInteractive](https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauevent_class) and [onFirstVizSizeKnown](https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#vizresizeevent_class) event classes for details about the function callback arguments.
+
+**requiresAuthorization**
+
+Override the system-wide authorization configuration for this specific view:
+
+```twig
+{{ craft.tableauconnect.renderVisualization('Your/View', {...}, false) }}
+```
+
+#### Example
 
 ```twig
 {{craft.tableauconnect.renderVisualization('Your/View', {
