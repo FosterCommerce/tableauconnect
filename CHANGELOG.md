@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.12 - 2018-10-23
+
+## Fixed
+
+- Make `requiresAuthorization` optional.
+
 ## 1.0.0-beta.11 - 2018-10-23
 
 ## Added

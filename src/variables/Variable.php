@@ -47,7 +47,7 @@ class Variable
         return $url;
     }
 
-    public function renderVisualization($view, $options, $requireAuthorization)
+    public function renderVisualization($view, $options, $requireAuthorization = null)
     {
         $plugin = Plugin::getInstance();
         $requireAuthorization = isset($requireAuthorization)
