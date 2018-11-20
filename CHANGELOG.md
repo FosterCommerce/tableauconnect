@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.13 - 2018-11-20
+
+## Fixed
+
+- Prevent encoding of URL parts in visualization URL.
+
 ## 1.0.0-beta.12 - 2018-10-23
 
 ## Fixed
