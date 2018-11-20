@@ -37,7 +37,7 @@ const initTableauVisualization_{{key}} = () => {
     {% endif %}
   }
 
-  const url = '{{settings.tableauServerUrl}}/{{tableauView}}'
+  const url = '{{settings.tableauServerUrl}}/{{tableauView|raw}}'
 
   const options = Object.assign({{options|json_encode()|raw}}, {
     onFirstInteractive,
