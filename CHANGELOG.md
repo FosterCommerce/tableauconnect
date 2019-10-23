@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.14 - 2019-10-23
+
+## Updated
+
+- Changed `canView` to `token` and now outputs token value if true. Still outputs `false` if the handled exception is an HTTP 401 error.
+
 ## 1.0.0-beta.13 - 2018-11-20
 
 ## Fixed

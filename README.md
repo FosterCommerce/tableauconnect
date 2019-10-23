@@ -113,7 +113,7 @@ function myCustomOnFirstVizSizeKnown(e, args) {
 If the "Requires Authorization" setting is enabled, you can check if a logged in user is authorized by Tableau to view a visualization. If the setting is disabled, this will always return `true`.
 
 ```twig
-{% if craft.tableauconnect.canView %}
+{% if craft.tableauconnect.token %}
   <!-- Render visualization -->
 {% else %}
   Not authorized to view visualization

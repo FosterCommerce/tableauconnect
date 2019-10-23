@@ -9,7 +9,7 @@ class Variable
 {
     private $token = null;
 
-    public function canView()
+    public function token()
     {
         $plugin = Plugin::getInstance();
         $requireAuthorization = $plugin->settings->requireAuthorization;
@@ -27,7 +27,7 @@ class Variable
                 throw new HttpException(400, $e->getMessage(), 0, $e);
             }
         }
-        return true;
+        return $this->token;
     }
 
     public function embedUrl($view)
