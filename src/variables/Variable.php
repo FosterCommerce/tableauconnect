@@ -36,7 +36,7 @@ class Variable
         $settings = $plugin->settings;
         $requireAuthorization = $settings->requireAuthorization;
         $url = $settings->tableauServerUrl;
-        if ($this->canView() && $requireAuthorization) {
+        if ($this->token() && $requireAuthorization) {
             $url = "{$url}/trusted/{$this->token}";
         } else {
             throw new HttpException(401, 'Not authorized to view visualization');
@@ -53,7 +53,7 @@ class Variable
         $requireAuthorization = isset($requireAuthorization)
             ? $requireAuthorization
             : $plugin->settings->requireAuthorization;
-        if ($requireAuthorization && $this->canView()) {
+        if ($requireAuthorization && $this->token()) {
             $view = "trusted/{$this->token}/views/{$view}";
         } elseif (!$requireAuthorization) {
             $view = "views/{$view}";

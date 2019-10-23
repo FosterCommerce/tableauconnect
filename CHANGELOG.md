@@ -1,5 +1,11 @@
 # Tableau Connect Changelog
 
+## 1.0.0-beta.15 - 2019-10-23
+
+## Fixed
+
+- Replaced references to removed `canView` variable.
+
 ## 1.0.0-beta.14 - 2019-10-23
 
 ## Updated
